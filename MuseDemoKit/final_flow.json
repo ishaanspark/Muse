@@ -1,0 +1,675 @@
+[
+    {
+        "id": "918d206a6fc4edb8",
+        "type": "tab",
+        "label": "Devices",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7cecc9bfa4cda098",
+        "type": "tab",
+        "label": "Video Switching",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "be45aaf610f13d93",
+        "type": "tab",
+        "label": "USB Switching",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f7c6ed18811dd578",
+        "type": "group",
+        "z": "be45aaf610f13d93",
+        "style": {
+            "stroke": "rgba(68, 71, 90, 0.75)",
+            "stroke-opacity": "1",
+            "fill": "#21222c",
+            "fill-opacity": "0.5",
+            "label": true,
+            "label-position": "nw",
+            "color": "#f8f8f2"
+        },
+        "nodes": [
+            "bbceac61e6ec51d9",
+            "34a66a760d320a74",
+            "05604f9831b1dab8",
+            "28521ab65fdf4008",
+            "6d6e67f20c371f80",
+            "3d29f63649d2182a",
+            "c84681bdabff8d56",
+            "cf208f076a148436"
+        ],
+        "x": 54,
+        "y": 99,
+        "w": 972,
+        "h": 182
+    },
+    {
+        "id": "a759cb4933eae72d",
+        "type": "group",
+        "z": "7cecc9bfa4cda098",
+        "name": "Video Switching",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "a71ae5e6c08e33d5",
+            "c71715fa1d993e52",
+            "9034159724c26eff",
+            "f8f5525ecd235398",
+            "cf3f062eb55f54ea",
+            "358850bbdc269a4e",
+            "0b072f12ed9e7d83",
+            "4e6a0abcc447a7aa",
+            "16272a698841b619",
+            "a54d0275eab40887",
+            "7636246ea059ca92"
+        ],
+        "x": 254,
+        "y": 219,
+        "w": 812,
+        "h": 322
+    },
+    {
+        "id": "f2c8e39a9e5255db",
+        "type": "Controller",
+        "z": "918d206a6fc4edb8",
+        "name": "Controller",
+        "mojo": {
+            "controller": "172.21.0.11:80",
+            "protocol": "http",
+            "host": "172.21.0.11",
+            "port": 80,
+            "username": "admin",
+            "password": "password"
+        },
+        "x": 560,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1b7823f6f4cc9c41",
+        "type": "Control Panel",
+        "z": "918d206a6fc4edb8",
+        "name": "Control Panel",
+        "mojo": {
+            "md5": "08038b4249e7b24dda3032d8f6666086",
+            "tp5": "demo_SL50.TP5",
+            "device": "AMX-10001"
+        },
+        "x": 570,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a71ae5e6c08e33d5",
+        "type": "UI Control",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "11",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/1",
+            "locator": {
+                "ccode": 12,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "9034159724c26eff"
+            ]
+        ]
+    },
+    {
+        "id": "c71715fa1d993e52",
+        "type": "UI Control",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "12",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/2",
+            "locator": {
+                "ccode": 13,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "9034159724c26eff"
+            ]
+        ]
+    },
+    {
+        "id": "9034159724c26eff",
+        "type": "change",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "InputStream",
+                "pt": "global",
+                "to": "topic",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "InputStream",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "f8f5525ecd235398"
+            ]
+        ]
+    },
+    {
+        "id": "f8f5525ecd235398",
+        "type": "debug",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "cf3f062eb55f54ea",
+        "type": "Command",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "Command",
+        "mojo": {
+            "device": "Dec1",
+            "command": "//decoder/streamSetup/videoStreamNumber",
+            "normalized": false,
+            "cmdvalue": "Message payload",
+            "args": "",
+            "onebased": false
+        },
+        "x": 750,
+        "y": 400,
+        "wires": [
+            [
+                "7636246ea059ca92"
+            ]
+        ]
+    },
+    {
+        "id": "358850bbdc269a4e",
+        "type": "UI Control",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "Wallplate Dec",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/3",
+            "locator": {
+                "ccode": 14,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 350,
+        "y": 400,
+        "wires": [
+            [
+                "0b072f12ed9e7d83"
+            ]
+        ]
+    },
+    {
+        "id": "0b072f12ed9e7d83",
+        "type": "change",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "InputStream",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "cf3f062eb55f54ea"
+            ]
+        ]
+    },
+    {
+        "id": "4e6a0abcc447a7aa",
+        "type": "UI Control",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "Box Dec",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/4",
+            "locator": {
+                "ccode": 15,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 340,
+        "y": 500,
+        "wires": [
+            [
+                "16272a698841b619"
+            ]
+        ]
+    },
+    {
+        "id": "16272a698841b619",
+        "type": "change",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "InputStream",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "a54d0275eab40887"
+            ]
+        ]
+    },
+    {
+        "id": "a54d0275eab40887",
+        "type": "Command",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "Command",
+        "mojo": {
+            "device": "Dec2",
+            "command": "//decoder/streamSetup/videoStreamNumber",
+            "normalized": false,
+            "cmdvalue": "Message payload",
+            "args": "",
+            "onebased": false
+        },
+        "x": 750,
+        "y": 500,
+        "wires": [
+            [
+                "7636246ea059ca92"
+            ]
+        ]
+    },
+    {
+        "id": "7636246ea059ca92",
+        "type": "debug",
+        "z": "7cecc9bfa4cda098",
+        "g": "a759cb4933eae72d",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f35c4b615a231c8c",
+        "type": "UI Control",
+        "z": "7cecc9bfa4cda098",
+        "name": "11",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/1",
+            "locator": {
+                "ccode": 12,
+                "cport": 1
+            },
+            "trigger": "RELEASE",
+            "state": "OFF"
+        },
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "6e6ad1b96e40b89e"
+            ]
+        ]
+    },
+    {
+        "id": "6e6ad1b96e40b89e",
+        "type": "change",
+        "z": "7cecc9bfa4cda098",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bbceac61e6ec51d9",
+        "type": "debug",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "34a66a760d320a74",
+        "type": "tcp request",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "Dec1",
+        "server": "172.21.0.111",
+        "port": "50001",
+        "out": "time",
+        "ret": "buffer",
+        "splitc": "0",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "bbceac61e6ec51d9"
+            ]
+        ]
+    },
+    {
+        "id": "05604f9831b1dab8",
+        "type": "change",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"KVMUSB20MainIP:172.21.0.12\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "34a66a760d320a74",
+                "c84681bdabff8d56"
+            ]
+        ]
+    },
+    {
+        "id": "28521ab65fdf4008",
+        "type": "change",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"KVMUSB20MainIP:172.21.0.13\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 220,
+        "wires": [
+            [
+                "c84681bdabff8d56",
+                "34a66a760d320a74"
+            ]
+        ]
+    },
+    {
+        "id": "6d6e67f20c371f80",
+        "type": "UI Control",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "UI Control",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/6",
+            "locator": {
+                "ccode": 21,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "05604f9831b1dab8"
+            ]
+        ]
+    },
+    {
+        "id": "3d29f63649d2182a",
+        "type": "UI Control",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "UI Control",
+        "mojo": {
+            "cp": "1b7823f6f4cc9c41",
+            "type": "BUTTON",
+            "path": "//1/7",
+            "locator": {
+                "ccode": 22,
+                "cport": 1
+            },
+            "trigger": "ANY",
+            "state": "NONE"
+        },
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "28521ab65fdf4008"
+            ]
+        ]
+    },
+    {
+        "id": "c84681bdabff8d56",
+        "type": "tcp request",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "Dec2",
+        "server": "172.21.0.114",
+        "port": "50001",
+        "out": "time",
+        "ret": "buffer",
+        "splitc": "0",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "cf208f076a148436"
+            ]
+        ]
+    },
+    {
+        "id": "236f620da3d88aa4",
+        "type": "inject",
+        "z": "be45aaf610f13d93",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "05604f9831b1dab8"
+            ]
+        ]
+    },
+    {
+        "id": "cf208f076a148436",
+        "type": "debug",
+        "z": "be45aaf610f13d93",
+        "g": "f7c6ed18811dd578",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "723290e374972021",
+        "type": "inject",
+        "z": "be45aaf610f13d93",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "28521ab65fdf4008"
+            ]
+        ]
+    }
+]
