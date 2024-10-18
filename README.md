@@ -5,7 +5,7 @@ The Demo Kit contains the following Devices
 4. Wall Plate Dec
 5. Boc Dec
 6. Varia SL-50
-7. NetGear Switch
+7. Network Switch
 
 The following are done with the use of Muse Automator and TP Design
 1. Video Switching
